@@ -1,17 +1,11 @@
 call plug#begin('~/.vim/plugged')
 " Initialize plugin system
 Plug 'fatih/vim-go'
-Plug 'mileszs/ack.vim'
-Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" for SNIP tool
-Plug 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
+Plug 'junegunn/goyo.vim'
 Plug 'preservim/nerdtree'
 Plug 'w0rp/ale'
-Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
@@ -21,7 +15,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 let g:loaded_python_provider=1
 let g:python_host_skip_check=1
 " Runs Python3 script in current buffer when you hit F9
-autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<    CR>
+autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
 syntax enable
 filetype plugin on
@@ -45,7 +39,12 @@ map  <C-h> :tabp<CR>
 map  <C-n> :tabnew<CR>
 nmap <F6> :NERDTreeToggle<CR>
 
+"Goyo mappings
+map <C-z> :Goyo 120x70<CR>
+map <F5> :Goyo!<CR>
+
 let g:airline_theme='ayu_mirage'
+"autocmd vimenter * colorscheme gruvbox
 set termguicolors     " enable true colors support
 "let ayucolor="light"  " for light version of theme
 let ayucolor="mirage"  " for light version of theme
@@ -58,17 +57,12 @@ set encoding=utf-8
 set laststatus=2
 let g:Powerline_symbols='unicode'
 
-
-
 " tab airline
 let g:airline#extensions#tabline#enabled = 1
 
 " Powerline
 let g:airline_powerline_fonts = 1
 let g:ackprg = 'ack -s -H --nopager --nocolor --nogroup --column --smart-case'
-
-
-
 
 augroup opkgs
   autocmd!
